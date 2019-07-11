@@ -1,5 +1,8 @@
 # CTF-admin
 
+## Java
+Java 11.0
+
 ## Guide
 https://spring.io/guides/gs/rest-service/
 
@@ -10,3 +13,4 @@ https://spring.io/guides/gs/rest-service/
 
 ### Option 2
 1. ./gradlew bootRun
+
