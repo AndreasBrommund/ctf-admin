@@ -7,6 +7,10 @@ buildscript {
     }
 }
 
+plugins {
+    id 'com.gradle.build-scan' version '2.1' 
+}
+
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
@@ -27,5 +31,10 @@ targetCompatibility = 11.0
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+buildScan {
+    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+    termsOfServiceAgree = 'yes'
 }
 
