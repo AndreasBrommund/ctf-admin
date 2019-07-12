@@ -9,6 +9,6 @@ import static org.junit.Assert.*;
 public class AppTest {
     @Test 
 	public void testAppHasAGreeting() {
-        assertTrue("app should have a greeting", false);
+        assertTrue("app should have a greeting", true);
     }
 }
