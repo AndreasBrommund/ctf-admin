@@ -1,5 +1,7 @@
 # CTF-admin
 
+[![Build Status](https://travis-ci.org/AndreasBrommund/ctf-admin.svg?branch=master)](https://travis-ci.org/AndreasBrommund/ctf-admin)
+
 ## Java
 Java 11.0
 
