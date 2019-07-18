@@ -9,6 +9,7 @@ Java 11.0
 * https://spring.io/guides/gs/rest-service/
 * https://guides.gradle.org/executing-gradle-builds-on-travisci/
 * https://github.com/dwyl/learn-travis/blob/master/encrypted-ssh-keys-deployment.md
+* https://blog.travis-ci.com/2019-05-30-setting-up-a-ci-cd-process-on-github
 
 ## Run 
 ### Option 1

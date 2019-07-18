@@ -3,9 +3,6 @@ install: true
 jdk:
 - oraclejdk11
 
-script:
-- "./gradlew build --scan --stacktrace"
-
 before_cache:
 - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
 - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
@@ -15,11 +12,26 @@ cache:
   - "$HOME/.gradle/caches/"
   - "$HOME/.gradle/wrapper/"
 
-before_install:
-- openssl aes-256-cbc -K $encrypted_0febda2b5ff0_key -iv $encrypted_0febda2b5ff0_iv 
-  -in deploy_key.enc -out ./deploy_key -d
-- eval "$(ssh-agent -s)"
-- chmod 600 ./deploy_key
-- echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-- ssh-add ./deploy_key
-  #- ssh -i ./deploy_key prod-server@85.24.180.187 pwd
+jobs:
+  include:
+    - stage: test
+      script:
+        - "./gradlew build --scan --stacktrace"
+    - stage: deploy_prod
+      script:
+        - openssl aes-256-cbc -K $encrypted_0febda2b5ff0_key -iv $encrypted_0febda2b5ff0_iv 
+          -in deploy_key.enc -out ./deploy_key -d
+        - eval "$(ssh-agent -s)"
+        - chmod 600 ./deploy_key
+        - echo -e "Host $PROD_IP\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+        - ssh-add ./deploy_key
+        - ssh $PROD_SERVER_USER@$PROD_IP $SCRIPT_PROD_PATH/clean.sh
+        - scp ./build/libs/ctf-admin-0.1.0.jar $PROD_SERVER_USER@$PROD_IP:$APP_PROD_PATH/ctf-admin.jar
+        - ssh $PROD_SERVER_USER@$PROD_IP $SCRIPT_PROD_PATH/start.sh
+stages:
+  - name: test
+    # require the type to be a PR
+    if: type = pull_request
+  - name: deploy_prod
+    # require the type to be push to master
+    if: type = push AND branch = master
