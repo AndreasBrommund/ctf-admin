@@ -19,6 +19,7 @@ jobs:
         - "./gradlew build --scan --stacktrace"
     - stage: deploy_prod
       script:
+        - "./gradlew build --scan --stacktrace"
         - openssl aes-256-cbc -K $encrypted_0febda2b5ff0_key -iv $encrypted_0febda2b5ff0_iv 
           -in deploy_key.enc -out ./deploy_key -d
         - eval "$(ssh-agent -s)"
