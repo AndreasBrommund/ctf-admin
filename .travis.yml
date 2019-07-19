@@ -33,4 +33,4 @@ stages:
   - name: test
     if: type = pull_request
   - name: deploy_prod
-    if: branch = master
+    if: type = push AND branch = master
