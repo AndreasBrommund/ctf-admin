@@ -47,5 +47,4 @@ stages:
   - name: deploy_prod
     if: type = push AND branch = master
   - name: deploy_test
-    # require the type to be push to test-server
     if: type = push AND branch = test-server
