@@ -32,7 +32,7 @@ jobs:
     - stage: deploy_test
       script:
         - openssl aes-256-cbc -K $encrypted_0febda2b5ff0_key -iv $encrypted_0febda2b5ff0_iv
-        -in deploy_key.enc -out ./deploy_key -d
+          -in deploy_key.enc -out ./deploy_key -d
         - eval "$(ssh-agent -s)"
         - chmod 600 ./deploy_key
         - echo -e "Host $TEST_IP\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
