@@ -10,5 +10,4 @@ public class HelloGradleController {
     public String helloGradle() {
         return "Hello ctf-admin, works try now!!!!!!!!!!!!!!!!!!!!!!!!";
     }
-
 }
