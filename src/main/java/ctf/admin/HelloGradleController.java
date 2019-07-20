@@ -8,7 +8,7 @@ public class HelloGradleController {
 
     @GetMapping
     public String helloGradle() {
-        return "Hello ctf-admin, works try now!!!";
+        return "Hello ctf-admin, works try now!!!!!!!!!!!!!!!!!!!s!!!!!";
     }
 
 }
