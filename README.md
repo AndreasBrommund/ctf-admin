@@ -20,6 +20,6 @@ Java 11.0
 1. ./gradlew bootRun
 
 ## Branches
-* test-server: auto deployed to the [test server](http://brommund.dskeppstedt.se::50000)
-* master: auto deployed to the  [prod server](http://brommund.dskeppstedt.se::50001)
+* test-server: auto deployed to the [test server](http://brommund.dskeppstedt.se:50000)
+* master: auto deployed to the  [prod server](http://brommund.dskeppstedt.se:50001)
 
